@@ -7,10 +7,11 @@ public class Project_three {
     public static void main(String[] args) {
 
         System.out.println("==================SECURITY SERVICES==================\n");
-        servicesMenu();
+        String[] records = new String[6];
+        servicesMenu(records);
     }
 
-    public static void servicesMenu() {
+    public static void servicesMenu(String[] records) {
         Scanner s = new Scanner(System.in);
         System.out.println("Services Menu");
         System.out.println("1 - Ciphering Text");
@@ -23,28 +24,30 @@ public class Project_three {
             case 1:
                 System.out.println();
                 System.out.println("**************************************************");
-                tchniquesMenu(nunberOfServiceMenu);
+                tchniquesMenu(nunberOfServiceMenu, records);
                 break;
             case 2:
                 System.out.println();
                 System.out.println("**************************************************");
-                tchniquesMenu(nunberOfServiceMenu);
+                tchniquesMenu(nunberOfServiceMenu, records);
                 break;
             case 3:
                 System.out.println();
                 System.out.println("==================SERVICES COMPLETED==================");
-                records();
+                records(records);
+                servicesMenu(records);
                 break;
             case 0:
                 System.out.println("-----------------End of Services-----------------\n");
                 System.exit(0);
             default:
                 System.out.println("Invalid Input!");
-                System.out.println("--------------------------------------------------");
+                System.out.println("--------------------------------------------------\n");
+                servicesMenu(records);
         }
     }
 
-    public static void tchniquesMenu(int nunberOfServiceMenu) {
+    public static void tchniquesMenu(int nunberOfServiceMenu, String[] records) {
         Scanner s = new Scanner(System.in);
         System.out.println("Techniques Menu");
         System.out.println("1 - ATBASH");
@@ -57,38 +60,61 @@ public class Project_three {
         switch (nunberOfTchniquesMenu) {
             case 1:
                 System.out.println("**************************************************");
-                ATABASH(nunberOfServiceMenu);
+                ATABASH(nunberOfServiceMenu, records);
+                servicesMenu(records);
                 break;
             case 2:
                 System.out.println("**************************************************");
                 if (nunberOfServiceMenu == 1) {
-                    cipheringHex();
+                    cipheringHex(records);
+                    servicesMenu(records);
                 } else {
-                    decipheringHex();
+                    decipheringHex(records);
+                    servicesMenu(records);
                 }
                 break;
             case 3:
                 System.out.println("**************************************************");
-                VIGENERE(nunberOfServiceMenu);
+                VIGENERE(nunberOfServiceMenu,records);
+                servicesMenu(records);
                 break;
             case 0:
-                servicesMenu();
+                servicesMenu(records);
                 break;
             default:
                 System.out.println("**************************************************");
                 System.out.println("Invalid Input!\n");
                 System.out.println("**************************************************\n");
-                servicesMenu();
+                servicesMenu(records);
                 break;
         }
     }
 
-    public static void records() {
-
+    public static void records(String[] records) {
+        for (int i = 0; i < records.length; i++) {
+            if (records[i] != null) {
+                System.out.print(i+1 + ". " + records[i] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println("======================================================");
     }
 
-    public static void ATABASH(int n) {
+    public static int indexOfEmptyPlace(String[] x) {
+        int index = 0;
+        for (int i = 0; i < x.length; i++) {
+            if (x[i] == null) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
+
+    public static void ATABASH(int n, String[] records) {
         Scanner s = new Scanner(System.in);
+        int index = indexOfEmptyPlace(records);
+        records[index] = "";
         if (n == 1) {
             System.out.print("Enter the text to be ciphered: ");
         } else {
@@ -109,9 +135,12 @@ public class Project_three {
         }
         if (n == 1) {
             System.out.println(line + " has been ciphered using ATBASH to: " + cipheredText + "\n");
+            records[index] += line + " has been ciphered using ATBASH to: " + cipheredText;
+
             System.out.println("**************************************************");
         } else {
             System.out.println(line + " has been deciphered using ATBASH to: " + cipheredText + "\n");
+            records[index] += line + " has been deciphered using ATBASH to: " + cipheredText;
             System.out.println("**************************************************");
         }
     }
@@ -126,8 +155,10 @@ public class Project_three {
         return x;
     }
 
-    public static void cipheringHex() {
+    public static void cipheringHex(String[] records) {
         Scanner s = new Scanner(System.in);
+        int index = indexOfEmptyPlace(records);
+        records[index] = "";
         System.out.print("Enter the text to be ciphered: ");
         String line = s.nextLine();
         String cipheredText = "";
@@ -137,6 +168,7 @@ public class Project_three {
             cipheredText += dec2Hex(numOfChar) + " ";
         }
         System.out.println(line + " has been ciphered using HEX to: " + cipheredText + "\n");
+        records[index] += line + " has been ciphered using HEX to: " + cipheredText;
         System.out.println("**************************************************");
     }
 
@@ -158,8 +190,10 @@ public class Project_three {
         }
     }
 
-    public static void decipheringHex() {
+    public static void decipheringHex(String[] records) {
         Scanner s = new Scanner(System.in);
+        int index = indexOfEmptyPlace(records);
+        records[index] = "";
         System.out.print("Enter the text to be deciphered: ");
         String line = s.nextLine();
         String cipheredText = "";
@@ -195,6 +229,7 @@ public class Project_three {
             decNumber = 0;
         }
         System.out.println(line + " has been deciphered using HEX to: " + cipheredText + "\n");
+        records[index] += line + " has been deciphered using HEX to: " + cipheredText;
         System.out.println("**************************************************");
     }
 
@@ -202,8 +237,10 @@ public class Project_three {
         return (int) (letter - 'a' + 10);
     }
 
-    public static void VIGENERE(int n) {
+    public static void VIGENERE(int n, String [] records) {
         Scanner s = new Scanner(System.in);
+        int index = indexOfEmptyPlace(records);
+        records[index] = "";
         if (n == 1) {
             System.out.print("Enter the text to be ciphered: ");
         } else {
@@ -236,9 +273,12 @@ public class Project_three {
         }
         if (n == 1) {
             System.out.println(line + " has been ciphered using VIGENERE to: " + cipheredText + "\n");
+            records[index] += line + " has been ciphered using VIGENERE to: " + cipheredText;
+
             System.out.println("**************************************************");
         } else {
             System.out.println(line + " has been deciphered using VIGENERE to: " + cipheredText + "\n");
+            records[index] += line + " has been deciphered using VIGENERE to: " + cipheredText;
             System.out.println("**************************************************");
         }
     }
