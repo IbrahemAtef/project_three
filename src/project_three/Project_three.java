@@ -8,8 +8,7 @@ public class Project_three {
 
         System.out.println("==================SECURITY SERVICES==================\n");
         String[] records = new String[6];
-//        servicesMenu(records);
-        System.out.println(lineOfKeyWord("SOLVING THE PROBLEM", "SECRET"));
+        servicesMenu(records);
     }
 
     public static void servicesMenu(String[] records) {
