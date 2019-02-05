@@ -60,7 +60,7 @@ public class Project_three {
         switch (nunberOfTchniquesMenu) {
             case 1:
                 System.out.println("**************************************************");
-                ATABASH(nunberOfServiceMenu, records);
+                ATBASH(nunberOfServiceMenu, records);
                 servicesMenu(records);
                 break;
             case 2:
@@ -111,7 +111,7 @@ public class Project_three {
         return index;
     }
 
-    public static void ATABASH(int n, String[] records) {
+    public static void ATBASH(int n, String[] records) {
         Scanner s = new Scanner(System.in);
         int index = indexOfEmptyPlace(records);
         records[index] = "";
