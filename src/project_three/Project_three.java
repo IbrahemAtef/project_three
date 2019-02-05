@@ -8,7 +8,8 @@ public class Project_three {
 
         System.out.println("==================SECURITY SERVICES==================\n");
         String[] records = new String[6];
-        servicesMenu(records);
+//        servicesMenu(records);
+        System.out.println(lineOfKeyWord("SOLVING THE PROBLEM", "SECRET"));
     }
 
     public static void servicesMenu(String[] records) {
@@ -75,7 +76,7 @@ public class Project_three {
                 break;
             case 3:
                 System.out.println("**************************************************");
-                VIGENERE(nunberOfServiceMenu,records);
+                VIGENERE(nunberOfServiceMenu, records);
                 servicesMenu(records);
                 break;
             case 0:
@@ -93,7 +94,7 @@ public class Project_three {
     public static void records(String[] records) {
         for (int i = 0; i < records.length; i++) {
             if (records[i] != null) {
-                System.out.print(i+1 + ". " + records[i] + " ");
+                System.out.print(i + 1 + ". " + records[i] + " ");
             }
             System.out.println();
         }
@@ -136,7 +137,6 @@ public class Project_three {
         if (n == 1) {
             System.out.println(line + " has been ciphered using ATBASH to: " + cipheredText + "\n");
             records[index] += line + " has been ciphered using ATBASH to: " + cipheredText;
-
             System.out.println("**************************************************");
         } else {
             System.out.println(line + " has been deciphered using ATBASH to: " + cipheredText + "\n");
@@ -237,7 +237,7 @@ public class Project_three {
         return (int) (letter - 'a' + 10);
     }
 
-    public static void VIGENERE(int n, String [] records) {
+    public static void VIGENERE(int n, String[] records) {
         Scanner s = new Scanner(System.in);
         int index = indexOfEmptyPlace(records);
         records[index] = "";
@@ -296,7 +296,7 @@ public class Project_three {
 
     public static char letterOfRank(int rank) {
         char[] x = arrayOfAlphabetLetters();
-        char ch = 'a';
+        char ch = 'A';
         for (int i = 0; i < x.length; i++) {
             if (rank == i + 1) {
                 ch = x[i];

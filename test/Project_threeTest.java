@@ -34,58 +34,43 @@ public class Project_threeTest {
     }
 
     @Test
-    public void testATBASH1() {
-        String plainText = "JAVA PROGRAMMIN";
-        String cipheringText = "QZEZ KILTIZNNRMT";    
+    public void testIndexOfEmptyPlace() {
+        String [] x = {"hellow" , "Java" , null};
+        int index = 2;
+        assertEquals(index, project_three.Project_three.indexOfEmptyPlace(x));
     }
     
     @Test
-    public void testATBASH2() {
-        String plainText = "QZEZ KILTIZNNRMT";
-        String decipheringText = "JAVA PROGRAMMIN";    
+    public void testArrayOfAlphabetLetters() {
+        char [] x = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+        assertArrayEquals(x,project_three.Project_three.arrayOfAlphabetLetters());
     }
     
     @Test
-    public void testHEX1() {
-        String plainText = "JAVA PROGRAMMIN";
-        String cipheringText = "4a 41 56 41 20 50 52 4f 47 52 41 4d 4d 49 4e 47";    
-    }
-    
-    @Test
-    public void testHEX2() {
-        String plainText = "4a 41 56 41 20 50 52 4f 47 52 41 4d 4d 49 4e 47";
-        String decipheringText = "JAVA PROGRAMMIN";    
-    }
-    
-    @Test
-    public void testVIGENERE1() {
-        String plainText = "JAVA PROGRAMMIN";
-        String cipheringText = "BEXR TKGKTRQFAR";    
-    }
-    
-    @Test
-    public void testVIGENERE2() {
-        String plainText = "BEXR TKGKTRQFAR";
-        String cipheringText = "JAVA PROGRAMMIN";    
+    public void testGetHexFormat() {
+        String ch = "c";
+        int n = 12;
+        assertEquals(ch, project_three.Project_three.getHexFormat(n));
     }
     
     @Test
     public void testrankOfLetter() {
-        
+        char ch = 'J';
+        int rank = 10;
+        assertEquals(rank, project_three.Project_three.rankOfLetter(ch));
     }
     
     @Test
     public void testletterOfRank() {
-            
-    }
-    
-    @Test
-    public void testlineOfKeyWord() {
-            
+            int rank = 2;
+            char ch = 'B';
+            assertEquals(ch, project_three.Project_three.letterOfRank(rank));
     }
     
     @Test
     public void testgetDecFormat() {
-           
+           char ch = 'A';
+           int dec = -22;
+           assertEquals(dec, project_three.Project_three.getDecFormat(ch));
     }
 }
